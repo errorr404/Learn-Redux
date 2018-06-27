@@ -8,7 +8,9 @@ class RecipeList extends React.Component {
       <div>
         {this.props.recipes.map((recipe,index)=>{
          return (
-           <RecipeItem key={index} recipe={recipe} />
+           <RecipeItem key={index} recipe={recipe}
+            favoriteButton={true}
+            />
 
          )
         })
