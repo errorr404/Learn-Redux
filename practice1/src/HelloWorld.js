@@ -3,7 +3,7 @@ import React from 'react';
 class HelloWorld extends React.Component {
   render() {
     return(
-      <h3>{this.props.tech}</h3>
+      <h3> {this.props.tech} </h3>
     );
   }
 }
