@@ -3,7 +3,7 @@ import React from 'react';
 //to connect a component to store we use connect functions
 import { connect } from 'react-redux';
 //import { bindActionCreators } from 'redux';
-import { addReminder, deleteReminder } from '../actions';
+import { addReminder, deleteReminder, clearReminders } from '../actions';
 import moment from 'moment';
 
 class App extends React.Component {
@@ -85,6 +85,12 @@ class App extends React.Component {
             >
               Add Reminder
           </button>
+          <div
+            className="btn btn-danger"
+            onClick={() => this.props.clearReminders()}
+            >
+              Clear Reminders
+          </div>
         </div>
           { this.renderReminders() }
       </div>
@@ -109,4 +115,4 @@ function mapStateToProps(state) {
 
 
 
-export default connect(mapStateToProps,{addReminder, deleteReminder})(App);
+export default connect(mapStateToProps,{addReminder, deleteReminder,clearReminders})(App);
