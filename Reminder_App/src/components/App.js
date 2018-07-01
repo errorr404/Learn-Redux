@@ -3,8 +3,9 @@ import React from 'react';
 //to connect a component to store we use connect functions
 import { connect } from 'react-redux';
 //import { bindActionCreators } from 'redux';
-import { addReminder, deleteReminder, clearReminders } from '../actions';
+import { addReminder, deleteReminder, clearReminders, showReminders } from '../actions';
 import moment from 'moment';
+import Display from './DisplayList'
 
 class App extends React.Component {
   constructor(props) {
@@ -18,9 +19,10 @@ class App extends React.Component {
 
   addReminder() {
 
- //console.log('state',this.state);
- console.log('state djuedate',this.state.dueDate);
+ console.log('2.Add reminder state',this.state);
+ //console.log('state djuedate',this.state.dueDate);
     this.props.addReminder(this.state.text,this.state.dueDate);
+    console.log('above all',this.props);
   }
 
   deleteReminder(id) {
@@ -30,6 +32,7 @@ class App extends React.Component {
   }
 
   renderReminders() {
+    console.log('this.props from app',this.props);
     const { reminders } = this.props;
     //console.log('this is form renderReminders',reminders);
     return (
@@ -93,7 +96,10 @@ class App extends React.Component {
           </div>
         </div>
           { this.renderReminders() }
+
+          <Display />
       </div>
+
     );
   }
 }
@@ -104,10 +110,14 @@ class App extends React.Component {
 //   return bindActionCreators({addReminder},dispatch);
 // }
 
-// here we write the mapStateToProps frunction to update our state
 
+console.log('addReminder----',addReminder);
+console.log('deleteReminder----',deleteReminder);
+console.log('clearReminders----',clearReminders);
+// console.log('store value',state);
+// here we write the mapStateToProps frunction to update our state
 function mapStateToProps(state) {
-  //console.log('mapStateToProps stats',state);
+  console.log('5.mapStateToProps stats',state);
   return {
     reminders: state
   }
@@ -115,4 +125,4 @@ function mapStateToProps(state) {
 
 
 
-export default connect(mapStateToProps,{addReminder, deleteReminder,clearReminders})(App);
+export default connect(mapStateToProps,{addReminder, deleteReminder,clearReminders,showReminders})(App);
