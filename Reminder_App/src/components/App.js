@@ -16,11 +16,12 @@ class App extends React.Component {
   }
 
   addReminder() {
- //   console.log('state',this);
+ console.log('state',this.state);
     this.props.addReminder(this.state.text);
   }
 
   render() {
+    console.log('this.props in render function',this.props);
     return (
       <div className="App">
         <div className="title">
@@ -54,7 +55,15 @@ class App extends React.Component {
 //   return bindActionCreators({addReminder},dispatch);
 // }
 
+// here we write the mapStateToProps frunction to update our state
+
+function mapStateToProps(state) {
+  //console.log('mapStateToProps stats',state);
+  return {
+    reminders: state
+  }
+}
 
 
 
-export default connect(null,{addReminder})(App);
+export default connect(mapStateToProps,{addReminder})(App);
